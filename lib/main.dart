@@ -43,6 +43,10 @@ class _Inicio extends State<Inicio> {
     return new Scaffold(
       appBar: searchBar.build(context),
       body: new Galeria(),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add_a_photo),
+        tooltip: 'Add Photo',
+      ),
     );
   }
 }
