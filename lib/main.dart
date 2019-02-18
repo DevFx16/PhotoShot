@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_search_bar/flutter_search_bar.dart';
+import './Galeria.dart';
 
 void main() => runApp(MyApp());
 
@@ -39,6 +40,9 @@ class _Inicio extends State<Inicio> {
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(appBar: searchBar.build(context));
+    return new Scaffold(
+      appBar: searchBar.build(context),
+      body: new Galeria(),
+    );
   }
 }
