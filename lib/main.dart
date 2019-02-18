@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_search_bar/flutter_search_bar.dart';
 
 void main() => runApp(MyApp());
 
@@ -7,53 +8,37 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.red
-      ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      title: 'PhotoShot',
+      theme: ThemeData(primarySwatch: Colors.red),
+      home: Inicio(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-
-  final String title;
-
+class Inicio extends StatefulWidget {
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _Inicio createState() => _Inicio();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+class _Inicio extends State<Inicio> {
+  SearchBar searchBar;
 
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
+  AppBar buildAppBar(BuildContext context) {
+    return new AppBar(
+        title: new Text('PhotoShot'),
+        actions: [searchBar.getSearchAction(context)]);
+  }
+
+  _Inicio() {
+    searchBar = new SearchBar(
+        inBar: false,
+        setState: setState,
+        onSubmitted: print,
+        buildDefaultAppBar: buildAppBar);
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title)
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.display1,
-            ),
-          ],
-        ),
-      ),
-    );
+    return new Scaffold(appBar: searchBar.build(context));
   }
 }
