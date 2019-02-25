@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_search_bar/flutter_search_bar.dart';
-import './Galeria.dart';
+import './Views/Galeria.dart';
 
 void main() => runApp(MyApp());
 
@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'PhotoShot',
-      theme: ThemeData(primarySwatch: Colors.red),
+      theme: ThemeData(primarySwatch: Colors.red, fontFamily: 'Nova Flat'),
       home: Inicio(),
     );
   }
