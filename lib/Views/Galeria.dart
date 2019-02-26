@@ -37,7 +37,7 @@ class _Galeria extends State<Galeria> {
               imageUrl: _imagenes[index],
               placeholder: (context, url) => new CircularProgressIndicator(),
               errorWidget: (context, url, error) => new Icon(Icons.error),
-              fit: BoxFit.cover,
+              fit: BoxFit.fill,
             ),
           );
         },

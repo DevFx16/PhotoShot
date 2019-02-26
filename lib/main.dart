@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'PhotoShot',
-      theme: ThemeData.dark(),
+      theme: ThemeData.light(),
       home: Inicio(),
     );
   }
@@ -24,6 +24,7 @@ class Inicio extends StatefulWidget {
 
 class _Inicio extends State<Inicio> {
   SearchBar searchBar;
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
   AppBar buildAppBar(BuildContext context) {
     return new AppBar(
@@ -36,6 +37,7 @@ class _Inicio extends State<Inicio> {
     searchBar = new SearchBar(
         inBar: false,
         setState: setState,
+        closeOnSubmit: true,
         onSubmitted: print,
         buildDefaultAppBar: buildAppBar);
   }
@@ -43,12 +45,14 @@ class _Inicio extends State<Inicio> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+      key: _scaffoldKey,
       appBar: searchBar.build(context),
       body: new Galeria(),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add_a_photo),
+        child: Icon(Icons.add_a_photo, color: Colors.white),
         tooltip: 'Add Photo',
-        onPressed: () => new Modal(context)
+        onPressed: () => new Modal(_scaffoldKey),
+        backgroundColor: Colors.red,
       ),
     );
   }
