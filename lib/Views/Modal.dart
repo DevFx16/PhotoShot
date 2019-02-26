@@ -1,5 +1,5 @@
 import 'dart:io';
-
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_tags/input_tags.dart';
 import 'package:image_picker/image_picker.dart';
@@ -20,7 +20,7 @@ class View extends State<_Modal> {
   File _image;
 
   Future getImage() async {
-    var image = await ImagePicker.pickImage(source: ImageSource.camera);
+    var image = await ImagePicker.pickImage(source: ImageSource.gallery);
     setState(() {
       _image = image;
     });
@@ -49,18 +49,13 @@ class View extends State<_Modal> {
           children: <Widget>[
             Container(
               height: (MediaQuery.of(context).size.width / 2) - 50,
-              alignment: Alignment(0, 0),
               decoration: BoxDecoration(
                 border: Border.all(color: Colors.red, width: 3),
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.circular(2),
               ),
-              child: Center(
-                child: _image == null
-                    ? Icon(Icons.broken_image, size: 100, color: Colors.red)
-                    : Image.file(_image, fit: BoxFit.fill),
-              ),
+              child: _image == null ? Icon(Icons.broken_image, size: 100, color: Colors.red) : Image.file(_image, fit: BoxFit.fill),
             ),
-            Container(padding: EdgeInsets.only(top: 30)),
+            Container(padding: EdgeInsets.only(top: 10)),
             RaisedButton(
               color: Colors.red,
               textColor: Colors.white,
@@ -88,7 +83,7 @@ class View extends State<_Modal> {
       child: Column(
         children: <Widget>[
           InputTags(
-            margin: const EdgeInsets.only(top: 30),
+            margin: const EdgeInsets.only(top: 20),
             lowerCase: true,
             symmetry: false,
             tags: this._tags,
@@ -108,7 +103,7 @@ class View extends State<_Modal> {
             onDelete: (value) => print(value),
           ),
           Container(
-            padding: EdgeInsets.only(top: 20),
+            padding: EdgeInsets.only(top: 10),
             child: ButtonBar(
               alignment: MainAxisAlignment.center,
               children: <Widget>[
@@ -134,7 +129,7 @@ class View extends State<_Modal> {
           ),
           Container(
             width: (MediaQuery.of(context).size.width / 2) + 50,
-            padding: EdgeInsets.only(top: 20),
+            padding: EdgeInsets.only(top: 10),
             child: _componente(),
           )
         ],
