@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_search_bar/flutter_search_bar.dart';
 import './Views/Galeria.dart';
+import './Views/Modal.dart';
 
 void main() => runApp(MyApp());
 
@@ -10,7 +11,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'PhotoShot',
-      theme: ThemeData(primarySwatch: Colors.red, fontFamily: 'Nova Flat'),
+      theme: ThemeData.dark(),
       home: Inicio(),
     );
   }
@@ -26,6 +27,7 @@ class _Inicio extends State<Inicio> {
 
   AppBar buildAppBar(BuildContext context) {
     return new AppBar(
+        backgroundColor: Colors.red,
         title: new Text('PhotoShot'),
         actions: [searchBar.getSearchAction(context)]);
   }
@@ -46,6 +48,7 @@ class _Inicio extends State<Inicio> {
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add_a_photo),
         tooltip: 'Add Photo',
+        onPressed: () => new Modal(context)
       ),
     );
   }

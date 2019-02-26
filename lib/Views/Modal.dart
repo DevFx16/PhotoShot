@@ -18,7 +18,7 @@ class _Modal extends StatefulWidget {
 }
 
 class View extends State<_Modal> {
-  List<String> Tags = [];
+  List<String> _tags = [];
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -28,7 +28,7 @@ class View extends State<_Modal> {
               Column(
                 children: <Widget>[
                   InputTags(
-                    tags: this.Tags,
+                    tags: this._tags,
                     borderRadius: 2,
                     textColor: Colors.black,
                   )

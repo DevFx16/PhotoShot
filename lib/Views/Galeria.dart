@@ -8,7 +8,7 @@ class Galeria extends StatefulWidget {
 }
 
 class _Galeria extends State<Galeria> {
-  final List<String> _Imagenes = [
+  final List<String> _imagenes = [
     'http://images6.fanpop.com/image/photos/41500000/Avengers-Infinity-War-avengers-infinity-war-1-and-2-41506952-1600-900.jpg',
     'https://a-static.besthdwallpaper.com/avengers-endgame-aliens-and-heroes-wallpaper-1920x1080-15970_48.jpg',
     'https://visualcocaine.org/public/uploads/large/11544348606yzbcf60mkhlkufhun8sliwrnbljorwmtmenk770h3pt8oxjyypcdbyhcvnvxbxo3djm26auri5sp6mgcsookxmbipza0icv5qjmz.jpg',
@@ -30,11 +30,11 @@ class _Galeria extends State<Galeria> {
     return new GridView.builder(
         physics: const AlwaysScrollableScrollPhysics(),
         padding: new EdgeInsets.all(3),
-        itemCount: _Imagenes.length,
+        itemCount: _imagenes.length,
         itemBuilder: (BuildContext context, int index) {
           return new GestureDetector(
             child: new CachedNetworkImage(
-              imageUrl: _Imagenes[index],
+              imageUrl: _imagenes[index],
               placeholder: (context, url) => new CircularProgressIndicator(),
               errorWidget: (context, url, error) => new Icon(Icons.error),
               fit: BoxFit.cover,
